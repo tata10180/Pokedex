@@ -13,6 +13,8 @@ import android.widget.Toast
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityMainBinding
+    private val ADMIN_EMAIL = "admin@gmail.com"
+    private val ADMIN_PASSWORD = "admin123"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -32,8 +34,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             val email = binding.emailField.text.toString()
             val password = binding.passwordField.text.toString()
             if(email.isNotEmpty() && password.isNotEmpty()) {
-                val intent: Intent = Intent(this, HomeActivity::class.java)
-                startActivity(intent)
+               if(email == ADMIN_EMAIL && password == ADMIN_PASSWORD) {
+                   val intent: Intent = Intent(this, HomeActivity::class.java)
+                   startActivity(intent)
+               }else{
+                   binding.emailField.setText("")
+                   binding.passwordField.setText("")
+                   Toast.makeText(this, "Email or Password Invalid!", Toast.LENGTH_SHORT).show()
+               }
             }else{
                 Toast.makeText(this, "Please enter both email and password", Toast.LENGTH_SHORT).show()
             }
@@ -46,3 +54,5 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 //  R.id.loginButton -> {
 // Handle login button click
 //falta colocar um email+senha adm
+//val intent: Intent = Intent(this, HomeActivity::class.java)
+//                startActivity(intent)
