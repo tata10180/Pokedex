@@ -48,11 +48,5 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             // Handle login logic here
         }
     }
-}
-// ver com android qual eles acham melhor
-//when (v?.id) {
-//  R.id.loginButton -> {
-// Handle login button click
-//falta colocar um email+senha adm
-//val intent: Intent = Intent(this, HomeActivity::class.java)
-//                startActivity(intent)
+    }
+
