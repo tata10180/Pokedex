@@ -27,7 +27,7 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".HomeActivity"
+            android:name=".ListActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
     </application>
