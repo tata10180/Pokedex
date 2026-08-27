@@ -28,4 +28,6 @@ class LoginActivity: AppCompatActivity(), /*View.OnClickListener {
     }
 
     -> precisa jogar o codigo do mainActivity aqui
+    -> o binding entra aqui
+
 }*/

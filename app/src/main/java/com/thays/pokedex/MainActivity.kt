@@ -35,24 +35,24 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         if (v?.id == R.id.loginButton) { //viewmodel?
-            val email = binding.emailField.text.toString()
-            val password = binding.passwordField.text.toString()
-            if (email.isNotEmpty() && password.isNotEmpty()) {
+            val email = binding.emailField.text.toString() //activity
+            val password = binding.passwordField.text.toString()//activity
+            if (email.isNotEmpty() && password.isNotEmpty()) {//viewmodel?
                 if (email == ADMIN_EMAIL && password == ADMIN_PASSWORD) {//repository
-                    val shared = getSharedPreferences("PokedexApp", Context.MODE_PRIVATE).edit{
-                        putString("EMAIL", ADMIN_EMAIL)
-                        putBoolean("isLoggedIn", true)
+                    val shared = getSharedPreferences("PokedexApp", Context.MODE_PRIVATE).edit{//repository
+                        putString("EMAIL", ADMIN_EMAIL)//repository
+                        putBoolean("isLoggedIn", true)//repository
                         apply()//repository
                     }
-                    val intent: Intent = Intent(this, ListActivity::class.java)
-                    startActivity(intent)
+                    val intent: Intent = Intent(this, ListActivity::class.java)//activity
+                    startActivity(intent)//activity
                 } else {
-                    binding.emailField.setText("")
-                    binding.passwordField.setText("")
-                    Toast.makeText(this, "Email or Password Invalid!", Toast.LENGTH_SHORT).show()
+                    binding.emailField.setText("")//activity
+                    binding.passwordField.setText("")//activity
+                    Toast.makeText(this, "Email or Password Invalid!", Toast.LENGTH_SHORT).show()//activity?
                 }
             } else {
-                Toast.makeText(this, "Please enter both email and password", Toast.LENGTH_SHORT)
+                Toast.makeText(this, "Please enter both email and password", Toast.LENGTH_SHORT)//activity?
                     .show()
             }//ate aqui?
             // Handle login logic here
