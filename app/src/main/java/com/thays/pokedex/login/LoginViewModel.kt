@@ -1,4 +1,4 @@
-package com.thays.pokedex
+package com.thays.pokedex.login
 
 import androidx.lifecycle.ViewModel
 
