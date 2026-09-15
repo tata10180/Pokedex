@@ -3,16 +3,10 @@
     <style name="Base.Theme.Pokedex" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-       <item name="ic_searchColor">@drawable/ic_search</item>
     </style>
 
     <style name="Theme.Pokedex" parent="Base.Theme.Pokedex" />
-    <style name="ic_searchColor" parent="@style/Widget.AppCombat.ic_search">
-    <item name="spinBars">true</item>
-    <item name="color">@android:color/brown</item>
     </style>
 
 </resources>
 
-<!-- nao e esse a solucao fazer um style name, por que nao pode colocar style name aqui, precisaria
-chamar no xml. mas como faz isso, deixar para descobrir amanha msm-->

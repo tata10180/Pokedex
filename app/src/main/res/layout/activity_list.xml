@@ -31,18 +31,27 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="50dp"
-
-            android:background="@drawable/edit_text_background"
+            android:background="@drawable/edit_text_background_search"
             android:drawableStart="@drawable/ic_search"
             android:drawablePadding="12dp"
+            android:drawableTint="@color/brown"
             android:hint="Search Pokemon"
             android:padding="10dp"
             android:textColor="@color/black"
             android:textSize="16sp" />
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/ic_heart_full"
+            android:tint="@color/red"
+            android:layout_marginStart="370dp"
+            android:layout_marginTop="-40dp"
+            android:gravity="right"/>
     </LinearLayout>
 
 
 </FrameLayout>
 
     <!-- Criar um autofillhints customizado de pokemon, ou seria
-            aquelas abas que aparece qnd pesquisa?-->
+            aquelas abas que aparece qnd pesquisa?
+            mudar a barra de pesquisa, pq fiz outra versao no figma-->
