@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView android:layout_width="410dp"
+    android:layout_height="wrap_content"
+    app:padding="70dp"
+    app:cardCornerRadius="20dp"
+    android:layout_marginTop="190dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginLeft="8dp"
+    app:cardBackgroundColor="@color/light_bluegray"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/pokemon_name"
+        android:layout_width="100dp"
+        android:layout_height="130dp"
+        android:fontFamily="@font/pokemon_solid"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="teste"
+        android:textColor="@color/brown"
+        android:textSize="14sp"
+
+    />
+
+<!--&lt;!&ndash;    <ImageView&ndash;&gt;-->
+<!--        android:id="@+id/pokemon_image"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--       " />-->
+
+    </androidx.cardview.widget.CardView>
+
+<!--preciso terminar a parte de imageview, para isso posso-->
+<!--criar uma imagem fake-->
+<!--    onde vc passa o drawable res id, vc adiciona a chama tools: antes-->
+<!--    tools:src="@drawable/my_image"-->
+
+
