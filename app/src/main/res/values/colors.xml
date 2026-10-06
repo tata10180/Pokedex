@@ -7,5 +7,6 @@
     <color name="light_brown">#BF4D3330</color>
     <color name="brown">#4D3330</color>
     <color name="light_blue">#99CCFAFF</color>
+    <color name ="light_greyBlue">#50B0DB</color>
     <color name="red">#D12F2F</color>
 </resources>

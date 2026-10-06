@@ -1,6 +1,7 @@
 package com.thays.pokedex.login
 
 import android.content.Context
+import android.view.autofill.AutofillManager
 import androidx.core.content.edit
 
 class LoginRepository(private val context: Context) {
@@ -11,6 +12,7 @@ class LoginRepository(private val context: Context) {
 
     fun login(email: String, password: String): Boolean{
         return email == ADMIN_EMAIL && password == ADMIN_PASSWORD
+
     }
 
     fun save(email:String){
@@ -21,6 +23,8 @@ class LoginRepository(private val context: Context) {
             apply()
 
 
+
         }
+
     }
 }
