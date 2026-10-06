@@ -1,42 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.cardview.widget.CardView android:layout_width="410dp"
-    android:layout_height="wrap_content"
-    app:padding="70dp"
+<androidx.cardview.widget.CardView
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="163dp"
+    android:layout_width="match_parent"
+    android:padding="70dp"
     app:cardCornerRadius="20dp"
-    android:layout_marginTop="190dp"
+    android
     android:layout_marginRight="16dp"
     android:layout_marginLeft="8dp"
     app:cardBackgroundColor="@color/light_bluegray"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    >
 
     <TextView
         android:id="@+id/pokemon_name"
-        android:layout_width="100dp"
+        android:layout_width="142dp"
         android:layout_height="130dp"
-        android:fontFamily="@font/pokemon_solid"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="teste"
+        android:fontFamily="@font/pokemon_solid"
+        tools:text="Mamoswine"
         android:textColor="@color/brown"
-        android:textSize="14sp"
+        android:textSize="18sp"
 
+        />
+
+    <ImageView
+       android:id="@+id/pokemon_image"
+       android:layout_width="160dp"
+       android:layout_height="150dp"
+       tools:src="@drawable/ic_mamoswine"
+        android:layout_marginStart = "230dp"
+        android:layout_marginTop = "20dp"
     />
+    <ImageView
+        android:id="@+id/pokemon_favorite"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="350dp"
+        android:layout_marginTop="10dp"
+        tools:src="@drawable/ic_heart_border"
+        android:tint ="@color/red"
+        />
 
-<!--&lt;!&ndash;    <ImageView&ndash;&gt;-->
-<!--        android:id="@+id/pokemon_image"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--       " />-->
+</androidx.cardview.widget.CardView>
 
-    </androidx.cardview.widget.CardView>
-
-<!--preciso terminar a parte de imageview, para isso posso-->
-<!--criar uma imagem fake-->
-<!--    onde vc passa o drawable res id, vc adiciona a chama tools: antes-->
-<!--    tools:src="@drawable/my_image"-->
-
+<!--&lt;!&ndash;preciso terminar a parte de imageview, para isso posso&ndash;&gt;-->
+<!--<!-preciso ajeitar a image fake e depois passar para -->
+<!--    a parte de recycler view que faz o scroll e repete os cards-->
+    <!--android:id="@+id/pokemon_name"-->
 

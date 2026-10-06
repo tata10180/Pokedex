@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import coil3.load
 
-class PokemonListAdapter(private val pokemonList: List<Pokemon>):
+class PokemonListAdapter(private val pokemonList: List<Pokemon> ):
     RecyclerView.Adapter<PokemonListAdapter.PokemonViewHolder>(){
 
         class PokemonViewHolder(view: View): RecyclerView.ViewHolder(view){
@@ -31,10 +32,10 @@ class PokemonListAdapter(private val pokemonList: List<Pokemon>):
             override fun onBindViewHolder(viewHolder: PokemonViewHolder, position: Int ){
                 val pokemon = pokemonList[position]
 
-               viewHolder.textView.text = pokemon.pokemonName //--> caminho certo, trocar pelo nome do card pokecards
-               viewHolder.imageView.text = pokemon.pokemonImage
+               viewHolder.textView.text = pokemon.name //--> caminho certo, trocar pelo nome do card pokecards
+               viewHolder.imageView.load(pokemon.image)
                 //colar as coisas, colar o objeto na view, cards iguais nao tem logica. so cards diferentes
-                //holder --> falta isso, ver se e so isso ou mais na verd
+
             }
         override fun getItemCount():Int {
             return pokemonList.size
