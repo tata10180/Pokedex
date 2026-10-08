@@ -1,6 +1,5 @@
 package com.thays.pokedex
 
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,7 +32,7 @@ class PokemonListAdapter(private val pokemonList: List<Pokemon> ):
                 val pokemon = pokemonList[position]
 
                viewHolder.textView.text = pokemon.name //--> caminho certo, trocar pelo nome do card pokecards
-               viewHolder.imageView.load(pokemon.image)
+               viewHolder.imageView.load(pokemon.sprites)
                 //colar as coisas, colar o objeto na view, cards iguais nao tem logica. so cards diferentes
 
             }

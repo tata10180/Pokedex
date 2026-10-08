@@ -28,29 +28,30 @@
         android:textSize="18sp"
 
         />
-
+    <ImageView
+        android:id="@+id/pokemon_favorite"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="350dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_heart_border"
+        android:tint ="@color/red"
+        />
     <ImageView
        android:id="@+id/pokemon_image"
        android:layout_width="160dp"
-       android:layout_height="150dp"
+       android:layout_height="wrap_content"
        tools:src="@drawable/ic_mamoswine"
+
         android:layout_marginStart = "230dp"
         android:layout_marginTop = "20dp"
     />
-    <ImageView
-        android:id="@+id/pokemon_favorite"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="350dp"
-        android:layout_marginTop="10dp"
-        tools:src="@drawable/ic_heart_border"
-        android:tint ="@color/red"
-        />
+
 
 </androidx.cardview.widget.CardView>
 
 <!--&lt;!&ndash;preciso terminar a parte de imageview, para isso posso&ndash;&gt;-->
-<!--<!-preciso ajeitar a image fake e depois passar para -->
+<!--<!-preciso ajeitar a sprites fake e depois passar para -->
 <!--    a parte de recycler view que faz o scroll e repete os cards-->
     <!--android:id="@+id/pokemon_name"-->
 
