@@ -5,7 +5,7 @@
     android:id="@+id/list"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".ListActivity">
+    tools:context=".list.view.ListActivity">
 
     <!-- avaliar se eu quero deixar a toolbar sem mexer, no nestedscroll -->
 

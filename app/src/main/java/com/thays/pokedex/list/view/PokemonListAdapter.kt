@@ -1,4 +1,4 @@
-package com.thays.pokedex
+package com.thays.pokedex.list.view
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,10 +7,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil3.load
+import com.thays.pokedex.R
+import com.thays.pokedex.list.model.Pokemon
 
-class PokemonListAdapter(private val pokemonList: List<Pokemon> ):
+class PokemonListAdapter:
     RecyclerView.Adapter<PokemonListAdapter.PokemonViewHolder>(){
-
+    var pokemonList: List<Pokemon> = emptyList()
         class PokemonViewHolder(view: View): RecyclerView.ViewHolder(view){
 
             val textView: TextView
@@ -20,6 +22,14 @@ class PokemonListAdapter(private val pokemonList: List<Pokemon> ):
                 textView = view.findViewById(R.id.pokemon_name) //card de pokemon que eu preciso criar
                 imageView = view.findViewById(R.id.pokemon_image)// card de pokemon que eu preciso criar
             }
+            fun pokemonBinding(pokemon: Pokemon){
+                textView.text = pokemon.name
+                imageView.load(pokemon.imageUrl){
+                    //placeholder(R.drawable.ic_load_pokeball) --> deu erro, descobrir por que depois
+                 //   error(R.drawable.ic_error)
+                }
+            }
+
 
             }
         override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): PokemonViewHolder {
@@ -31,8 +41,7 @@ class PokemonListAdapter(private val pokemonList: List<Pokemon> ):
             override fun onBindViewHolder(viewHolder: PokemonViewHolder, position: Int ){
                 val pokemon = pokemonList[position]
 
-               viewHolder.textView.text = pokemon.name //--> caminho certo, trocar pelo nome do card pokecards
-               viewHolder.imageView.load(pokemon.sprites)
+               viewHolder.pokemonBinding(pokemon)
                 //colar as coisas, colar o objeto na view, cards iguais nao tem logica. so cards diferentes
 
             }
@@ -41,9 +50,8 @@ class PokemonListAdapter(private val pokemonList: List<Pokemon> ):
         } //saber quantos pokemons tem na lista
 
         }
-
-
-
 //pesquisar mais sobre o fluxo e como ele funciona
 //ate pq eu nao entendi como isso funciona, por que eu preciso fazer recyclerview.adapter
 //e por que o class viewholder
+//falta fazer o load e o erro
+//falta tb a activity

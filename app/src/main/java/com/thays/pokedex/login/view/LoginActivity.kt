@@ -1,17 +1,18 @@
-package com.thays.pokedex.login
+package com.thays.pokedex.login.view
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.view.autofill.AutofillManager
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.thays.pokedex.ListActivity
 import com.thays.pokedex.R
 import com.thays.pokedex.databinding.ActivityMainBinding
+import com.thays.pokedex.list.view.ListActivity
+import com.thays.pokedex.login.model.LoginRepository
+import com.thays.pokedex.login.viewmodel.LoginViewModel
 
 class LoginActivity: AppCompatActivity(), View.OnClickListener {
 

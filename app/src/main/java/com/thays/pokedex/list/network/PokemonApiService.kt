@@ -1,6 +1,8 @@
-package com.thays.pokedex
+package com.thays.pokedex.list.network
 
-import com.thays.pokedex.RetrofitClient.Companion.retrofit
+import com.thays.pokedex.list.model.PokemonDetails
+import com.thays.pokedex.list.model.PokemonListResponse
+import com.thays.pokedex.list.network.RetrofitClient.Companion.retrofit
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -14,10 +16,10 @@ interface PokemonApiService {
         @Query("limit") limit: Int,//quantos pokemon vai puxar
         @Query("offset") offset: Int //a partir de qual posicao comeca
 
-    ):List<Pokemon>
+    ): PokemonListResponse
 
     @GET("pokemon/{name}") //puxa um pokemon especifico
-    suspend fun getPokemon (@Path("name")name:String)
+    suspend fun getPokemon (@Path("name")name:String): PokemonDetails //isso usa dps na parte de detalhes
 
 }
 

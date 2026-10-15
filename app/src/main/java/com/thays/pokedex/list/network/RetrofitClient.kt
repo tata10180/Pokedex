@@ -1,11 +1,10 @@
-package com.thays.pokedex
+package com.thays.pokedex.list.network
 
-import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
-
 
 class RetrofitClient {
     companion object {
@@ -18,6 +17,6 @@ class RetrofitClient {
                 .connectTimeout(10000L, TimeUnit.MILLISECONDS)
                 .readTimeout( 10000L , TimeUnit.MILLISECONDS)
                 .writeTimeout( 10000L , TimeUnit.MILLISECONDS).build())
-    .build()
+        .build()
 }
 }

@@ -1,6 +1,7 @@
-package com.thays.pokedex.login
+package com.thays.pokedex.login.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.thays.pokedex.login.model.LoginRepository
 
 class LoginViewModel(private val repository: LoginRepository): ViewModel() {
 

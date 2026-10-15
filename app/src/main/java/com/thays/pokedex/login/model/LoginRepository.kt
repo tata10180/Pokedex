@@ -1,7 +1,6 @@
-package com.thays.pokedex.login
+package com.thays.pokedex.login.model
 
 import android.content.Context
-import android.view.autofill.AutofillManager
 import androidx.core.content.edit
 
 class LoginRepository(private val context: Context) {
