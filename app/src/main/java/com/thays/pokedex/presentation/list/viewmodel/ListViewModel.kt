@@ -1,33 +1,32 @@
-package com.thays.pokedex.list.viewmodel
+package com.thays.pokedex.presentation.list.viewmodel
 
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.thays.pokedex.list.model.ListRepository
-import com.thays.pokedex.list.model.Pokemon
-import com.thays.pokedex.list.network.PokemonApi
+import com.thays.pokedex.domain.model.Pokemon
+import com.thays.pokedex.domain.repository.ListRepository
 import kotlinx.coroutines.launch
 
-sealed class PokemonUiState{
-    object Loading: PokemonUiState()
-    data class Success(val pokemons: List<Pokemon>): PokemonUiState()
-    data class Error(val message:String): PokemonUiState()
+sealed class PokemonUiState {
+    object Loading : PokemonUiState()
+    data class Success(val pokemons: List<Pokemon>) : PokemonUiState()
+    data class Error(val message: String) : PokemonUiState()
 }
 
-class ListViewModel(): ViewModel() {
+class ListViewModel(private val repository: ListRepository) : ViewModel() {
 
-    private val repository = ListRepository(PokemonApi.retrofitService)
+    //private val repository = ListRepositoryImpl(PokemonApi.retrofitService)
 
     private val _uiState = MutableLiveData<PokemonUiState>()
     val uiState: LiveData<PokemonUiState> = _uiState
 
-    fun loadPokemon(limit: Int, offset: Int){
-        viewModelScope.launch{
+    fun loadPokemon(limit: Int, offset: Int) {
+        viewModelScope.launch {
             _uiState.value = PokemonUiState.Loading
             try {
-                val pokemons = repository.getPokemonList(20, 0)
+                val pokemons = repository.getPokemonList(limit, offset)
                 _uiState.value = PokemonUiState.Success(pokemons)
             } catch (e: Exception) {
                 _uiState.value = PokemonUiState.Error(e.message ?: "Unknown error")
@@ -36,13 +35,6 @@ class ListViewModel(): ViewModel() {
     }
 
 }
-
-
-
-
-
-
-
 
 
 //tirar mutable pokemon

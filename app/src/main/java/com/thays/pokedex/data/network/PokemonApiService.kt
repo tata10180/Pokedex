@@ -1,8 +1,8 @@
-package com.thays.pokedex.list.network
+package com.thays.pokedex.data.network
 
-import com.thays.pokedex.list.model.PokemonDetails
-import com.thays.pokedex.list.model.PokemonListResponse
-import com.thays.pokedex.list.network.RetrofitClient.Companion.retrofit
+import com.thays.pokedex.data.PokemonDetails
+import com.thays.pokedex.data.PokemonListResponse
+import com.thays.pokedex.data.network.RetrofitClient.Companion.retrofit
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -19,12 +19,12 @@ interface PokemonApiService {
     ): PokemonListResponse
 
     @GET("pokemon/{name}") //puxa um pokemon especifico
-    suspend fun getPokemon (@Path("name")name:String): PokemonDetails //isso usa dps na parte de detalhes
+    suspend fun getPokemon(@Path("name") name: String): PokemonDetails //isso usa dps na parte de detalhes
 
 }
 
-object PokemonApi{
-    val retrofitService: PokemonApiService by lazy{
+object PokemonApi {
+    val retrofitService: PokemonApiService by lazy {
         retrofit.create(PokemonApiService::class.java)
     }
 }

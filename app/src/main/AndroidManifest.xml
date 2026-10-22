@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pokedex">
         <activity
-            android:name=".login.view.LoginActivity"
+            android:name=".presentation.login.view.LoginActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
@@ -29,7 +29,7 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".list.view.ListActivity"
+            android:name=".presentation.list.view.ListActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
     </application>

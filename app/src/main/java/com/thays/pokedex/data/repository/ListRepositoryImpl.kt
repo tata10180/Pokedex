@@ -1,10 +1,11 @@
-package com.thays.pokedex.list.model
+package com.thays.pokedex.data.repository
 
-import com.thays.pokedex.list.network.PokemonApiService
+import com.thays.pokedex.data.network.PokemonApiService
+import com.thays.pokedex.domain.model.Pokemon
+import com.thays.pokedex.domain.repository.ListRepository
 
-class ListRepository(private val api: PokemonApiService) {
-
-    suspend fun getPokemonList(limit: Int, offset: Int):List<Pokemon>{
+class ListRepositoryImpl(private val api: PokemonApiService) : ListRepository {
+    override suspend fun getPokemonList(limit: Int, offset: Int): List<Pokemon> {
         val response = api.getPokemonList(limit, offset)
         return response.results.map { result ->
             val id = result.url.split("/").filter { it.isNotEmpty() }.last().toLong()
@@ -14,9 +15,9 @@ class ListRepository(private val api: PokemonApiService) {
                 "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/$id.png"
             )
         }
-
     }
-    suspend fun getPokemonFromDetails(name: String): Pokemon {
+
+    override suspend fun getPokemonFromDetails(name: String): Pokemon {
         val details = api.getPokemon(name)
         return Pokemon(
             id = details.id,

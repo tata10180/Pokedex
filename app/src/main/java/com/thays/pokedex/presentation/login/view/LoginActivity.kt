@@ -1,4 +1,4 @@
-package com.thays.pokedex.login.view
+package com.thays.pokedex.presentation.login.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,12 +9,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.thays.pokedex.R
+import com.thays.pokedex.data.repository.LoginRepositoryImpl
 import com.thays.pokedex.databinding.ActivityMainBinding
-import com.thays.pokedex.list.view.ListActivity
-import com.thays.pokedex.login.model.LoginRepository
-import com.thays.pokedex.login.viewmodel.LoginViewModel
+import com.thays.pokedex.presentation.list.view.ListActivity
+import com.thays.pokedex.domain.repository.LoginRepository
+import com.thays.pokedex.presentation.login.viewmodel.LoginViewModel
 
-class LoginActivity: AppCompatActivity(), View.OnClickListener {
+class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var loginRepository: LoginRepository
@@ -26,13 +27,13 @@ class LoginActivity: AppCompatActivity(), View.OnClickListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        loginRepository = LoginRepository(this)
+        loginRepository = LoginRepositoryImpl(this)
         loginViewModel = LoginViewModel(loginRepository)
 
         binding.emailField.setText("admin@gmail.com")
