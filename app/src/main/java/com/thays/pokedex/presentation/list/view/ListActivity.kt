@@ -9,19 +9,18 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.thays.pokedex.data.network.PokemonApi
 import com.thays.pokedex.databinding.ActivityListBinding
+import com.thays.pokedex.di.PokemonApplication
 import com.thays.pokedex.presentation.list.viewmodel.ListViewModel
 import com.thays.pokedex.presentation.list.viewmodel.ListViewModelFactory
 import com.thays.pokedex.presentation.list.viewmodel.PokemonUiState
 
 class ListActivity : AppCompatActivity() {
     //bsucar entender melhor dps o factoryproducer
-    private val viewModel: ListViewModel by viewModels(factoryProducer = {
-        ListViewModelFactory(
-            PokemonApi.retrofitService
-        )
-    })
+    private val viewModel: ListViewModel by viewModels {
+        val container = (application as PokemonApplication).container
+        ListViewModelFactory(container.listRepository)
+    }
     private lateinit var binding: ActivityListBinding //precisa fazer binding aqui, e conectar, nao lembro como..
     private lateinit var pokemonAdapter: PokemonListAdapter
 
@@ -67,7 +66,7 @@ class ListActivity : AppCompatActivity() {
                 }
             }
         }
-        viewModel.loadPokemon(10, 10)
+        //viewModel.loadPokemon(20, 10)
 
 
     }

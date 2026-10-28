@@ -16,14 +16,7 @@ class LoginRepositoryImpl(private val context: Context): LoginRepository {
     }
 
 
-    override fun save(email: String) { //isso sai do domain?
-        val sharedPreference = context.getSharedPreferences("PokedexApp", Context.MODE_PRIVATE)
-        sharedPreference.edit {
-            putString("EMAIL", email)
-            putBoolean("isLoggedIn", true)
-            apply()
+    override fun save(email: String) {
 
-
-        }
     }
 }

@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.thays.pokedex.domain.model.Pokemon
 import com.thays.pokedex.domain.repository.ListRepository
 import kotlinx.coroutines.launch
+import java.io.IOException
 
 sealed class PokemonUiState {
     object Loading : PokemonUiState()
@@ -17,7 +18,7 @@ sealed class PokemonUiState {
 
 class ListViewModel(private val repository: ListRepository) : ViewModel() {
 
-    //private val repository = ListRepositoryImpl(PokemonApi.retrofitService)
+    init{loadPokemon(20, 10)}
 
     private val _uiState = MutableLiveData<PokemonUiState>()
     val uiState: LiveData<PokemonUiState> = _uiState
@@ -28,7 +29,7 @@ class ListViewModel(private val repository: ListRepository) : ViewModel() {
             try {
                 val pokemons = repository.getPokemonList(limit, offset)
                 _uiState.value = PokemonUiState.Success(pokemons)
-            } catch (e: Exception) {
+            } catch (e: IOException) {
                 _uiState.value = PokemonUiState.Error(e.message ?: "Unknown error")
             }
         }

@@ -23,8 +23,3 @@ interface PokemonApiService {
 
 }
 
-object PokemonApi {
-    val retrofitService: PokemonApiService by lazy {
-        retrofit.create(PokemonApiService::class.java)
-    }
-}

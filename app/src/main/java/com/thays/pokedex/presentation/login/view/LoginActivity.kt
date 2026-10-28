@@ -5,21 +5,29 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.thays.pokedex.R
 import com.thays.pokedex.data.repository.LoginRepositoryImpl
 import com.thays.pokedex.databinding.ActivityMainBinding
+import com.thays.pokedex.di.PokemonApplication
 import com.thays.pokedex.presentation.list.view.ListActivity
 import com.thays.pokedex.domain.repository.LoginRepository
 import com.thays.pokedex.presentation.login.viewmodel.LoginViewModel
+import com.thays.pokedex.presentation.login.viewmodel.LoginViewModelFactory
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var loginRepository: LoginRepository
-    private lateinit var loginViewModel: LoginViewModel
+
+
+    private val viewModel: LoginViewModel by viewModels{
+        val container = (application as PokemonApplication).container
+        LoginViewModelFactory(container.loginRepository)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,8 +41,9 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             insets
         }
 
-        loginRepository = LoginRepositoryImpl(this)
-        loginViewModel = LoginViewModel(loginRepository)
+        val container = (application as PokemonApplication).container
+        loginRepository = container.loginRepository
+
 
         binding.emailField.setText("admin@gmail.com")
         binding.passwordField.setText("admin123")
@@ -53,7 +62,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                     .show()
                 return
             }
-            val isLoggedIn = loginViewModel.login(email, password)
+            val isLoggedIn = viewModel.login(email, password)
 
             if (isLoggedIn) {
                 val intent = Intent(this, ListActivity::class.java)//activity

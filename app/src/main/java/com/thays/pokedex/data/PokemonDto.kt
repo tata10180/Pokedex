@@ -1,5 +1,7 @@
 package com.thays.pokedex.data
 
+import com.google.gson.annotations.SerializedName
+
 //para o limit e offset
 data class PokemonListResponse(val count: Int, val next: String?, val results: List<PokemonResult>) //isso e dto
 
@@ -12,8 +14,8 @@ data class PokemonDetails(val id: Long, val name: String, val sprites: Sprites) 
 //aqui tem a imagem
 data class Sprites(val other: Other)
 
-data class Other(val official_artwork: OfficialArtwork)
+data class Other(@SerializedName("official-artwork") val official_artwork: OfficialArtwork)
 
-data class OfficialArtwork(val front_default: String?)
+data class OfficialArtwork(@SerializedName("front-default") val front_default: String?)
 
 //data class dos pokemons
