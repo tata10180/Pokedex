@@ -16,6 +16,5 @@ data class Sprites(val other: Other)
 
 data class Other(@SerializedName("official-artwork") val official_artwork: OfficialArtwork)
 
-data class OfficialArtwork(@SerializedName("front-default") val front_default: String?)
+data class OfficialArtwork(@SerializedName("front-default")val front_default: String?)
 
-//data class dos pokemons

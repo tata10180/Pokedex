@@ -1,22 +1,21 @@
 package com.thays.pokedex.data.repository
 
-import android.content.Context
-import androidx.core.content.edit
 import com.thays.pokedex.domain.repository.LoginRepository
+import com.thays.pokedex.domain.repository.SessionStorage
 
-class LoginRepositoryImpl(private val context: Context): LoginRepository {
+class LoginRepositoryImpl(private val session: SessionStorage) : LoginRepository {
 
     private val ADMIN_EMAIL = "admin@gmail.com" //fica aqui por estar hardcoded
 
     private val ADMIN_PASSWORD = "admin123" //fica aqui por estar hardcoded
 
     override fun login(email: String, password: String): Boolean {
-        return email == ADMIN_EMAIL && password == ADMIN_PASSWORD
+        val success =  email == ADMIN_EMAIL && password == ADMIN_PASSWORD
+        if(success){
+           session.saveSession(email)
+        }
+        return success
 
     }
 
-
-    override fun save(email: String) {
-
-    }
 }

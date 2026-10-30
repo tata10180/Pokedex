@@ -1,6 +1,7 @@
 package com.thays.pokedex.presentation.list.view
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -9,6 +10,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.thays.pokedex.R
 import com.thays.pokedex.databinding.ActivityListBinding
 import com.thays.pokedex.di.PokemonApplication
 import com.thays.pokedex.presentation.list.viewmodel.ListViewModel
@@ -55,18 +58,22 @@ class ListActivity : AppCompatActivity() {
                 is PokemonUiState.Success -> {
                     pokemonAdapter.pokemonList = state.pokemons
                     pokemonAdapter.notifyDataSetChanged()
+                    binding.loadingGif.visibility = View.GONE
                 }
 
                 is PokemonUiState.Error -> {
                     Toast.makeText(this, state.message, Toast.LENGTH_LONG).show()
+                    binding.loadingGif.visibility = View.GONE
                 }
 
                 PokemonUiState.Loading -> {
-
+                    Glide.with(this).asGif().load(R.drawable.ic_load_pokeball_speed).into(binding.loadingGif)
+                    //binding.recyclerView.visibility=View.INVISIBLE
+                    binding.loadingGif.visibility = View.VISIBLE
                 }
             }
         }
-        //viewModel.loadPokemon(20, 10)
+
 
 
     }

@@ -18,10 +18,10 @@ sealed class PokemonUiState {
 
 class ListViewModel(private val repository: ListRepository) : ViewModel() {
 
-    init{loadPokemon(20, 10)}
-
     private val _uiState = MutableLiveData<PokemonUiState>()
     val uiState: LiveData<PokemonUiState> = _uiState
+
+    init{loadPokemon(50, 10)}
 
     fun loadPokemon(limit: Int, offset: Int) {
         viewModelScope.launch {

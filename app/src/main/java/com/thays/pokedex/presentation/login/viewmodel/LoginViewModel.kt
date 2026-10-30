@@ -9,7 +9,7 @@ class LoginViewModel(private val repository: LoginRepository) : ViewModel() {
 
         if (email.isNotEmpty() && password.isNotEmpty()) {
             if (repository.login(email, password)) {
-                repository.save(email)
+               // repository.save(email)
                 return true
             }
 

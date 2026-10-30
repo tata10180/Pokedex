@@ -27,10 +27,11 @@ class PokemonListAdapter :
         fun pokemonBinding(pokemon: Pokemon) {
             textView.text = pokemon.name
             imageView.load(pokemon.imageUrl) {
-                //placeholder(R.drawable.ic_load_pokeball) --> deu erro, descobrir por que depois
+
                 //   error(R.drawable.ic_error)
             }
         }
+
 
 
     }

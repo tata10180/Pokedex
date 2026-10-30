@@ -18,15 +18,18 @@ class AppContainer(context: Context) {
     }
 
     val loginRepository: LoginRepository by lazy {
-        LoginRepositoryImpl(context) //adicionar by lazy talvez
+        LoginRepositoryImpl(sessionStorage) //adicionar by lazy talvez
     }
     val listRepository: ListRepository by lazy {
         ListRepositoryImpl(pokemonApi)
     }
-    private val prefs: SharedPreferences =
-        context.getSharedPreferences("session", Context.MODE_PRIVATE)
+//    private val prefs: SharedPreferences =
+//        context.getSharedPreferences("session", Context.MODE_PRIVATE)
 
     // Exposto com o tipo da interface (Domain)
-    val sessionStorage: SessionStorage = SessionStorageImpl(prefs)
+    val sessionStorage: SessionStorage by lazy{
+        SessionStorageImpl(context)
+    }
+
 
 }
