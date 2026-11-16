@@ -1,5 +1,6 @@
 package com.thays.pokedex.presentation.list.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -14,11 +15,12 @@ import com.bumptech.glide.Glide
 import com.thays.pokedex.R
 import com.thays.pokedex.databinding.ActivityListBinding
 import com.thays.pokedex.di.PokemonApplication
+import com.thays.pokedex.presentation.favorites.FavoritePokemonActivity
 import com.thays.pokedex.presentation.list.viewmodel.ListViewModel
 import com.thays.pokedex.presentation.list.viewmodel.ListViewModelFactory
 import com.thays.pokedex.presentation.list.viewmodel.PokemonUiState
 
-class ListActivity : AppCompatActivity() {
+class ListActivity : AppCompatActivity(), View.OnClickListener {
     //bsucar entender melhor dps o factoryproducer
     private val viewModel: ListViewModel by viewModels {
         val container = (application as PokemonApplication).container
@@ -43,15 +45,21 @@ class ListActivity : AppCompatActivity() {
 
         recyclerView.adapter = pokemonAdapter
 
-
         ViewCompat.setOnApplyWindowInsetsListener(recyclerView) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        binding.favoriteHeart.setOnClickListener(this)
 
     }
 
+    override fun onClick(v: View?){
+        if(v?.id == R.id.favorite_heart){
+            val intent = Intent(this, FavoritePokemonActivity::class.java)
+            startActivity(intent)
+        }
+    }
     private fun observeViewModel() {
         viewModel.uiState.observe(this) { state ->
             when (state) {

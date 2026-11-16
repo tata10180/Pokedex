@@ -1,5 +1,6 @@
 package com.thays.pokedex.presentation.list.view
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil3.load
 import com.thays.pokedex.R
 import com.thays.pokedex.domain.model.Pokemon
+import com.thays.pokedex.presentation.favorites.FavoritePokemonActivity
 
 class PokemonListAdapter :
     RecyclerView.Adapter<PokemonListAdapter.PokemonViewHolder>() {
@@ -55,6 +57,7 @@ class PokemonListAdapter :
         return pokemonList.size
     } //saber quantos pokemons tem na lista
 
+   // private val onFavoriteClick: ()
 }
 //pesquisar mais sobre o fluxo e como ele funciona
 //ate pq eu nao entendi como isso funciona, por que eu preciso fazer recyclerview.adapter

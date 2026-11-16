@@ -1,6 +1,7 @@
 package com.thays.pokedex.presentation.list.viewmodel
 
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,7 +22,7 @@ class ListViewModel(private val repository: ListRepository) : ViewModel() {
     private val _uiState = MutableLiveData<PokemonUiState>()
     val uiState: LiveData<PokemonUiState> = _uiState
 
-    init{loadPokemon(50, 10)}
+    init{loadPokemon(20, 0)}
 
     fun loadPokemon(limit: Int, offset: Int) {
         viewModelScope.launch {
@@ -29,7 +30,8 @@ class ListViewModel(private val repository: ListRepository) : ViewModel() {
             try {
                 val pokemons = repository.getPokemonList(limit, offset)
                 _uiState.value = PokemonUiState.Success(pokemons)
-            } catch (e: IOException) {
+            } catch (e: Exception) {
+                Log.e("ListViewModel", "Falha ao carregar", e)
                 _uiState.value = PokemonUiState.Error(e.message ?: "Unknown error")
             }
         }
